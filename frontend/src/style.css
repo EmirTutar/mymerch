@@ -1,0 +1,88 @@
+:root {
+  /* Farben - Riso-Print-Palette */
+  --paper: #ede9e0;
+  --paper-dim: #e3ddcf;
+  --ink: #171514;
+  --riso-red: #e8432c;
+  --riso-blue: #0b5fcb;
+  --riso-yellow: #f6c445;
+  --line: #c9c2ae;
+
+  /* Typografie */
+  --font-display: 'Archivo Black', sans-serif;
+  --font-body: 'Space Grotesk', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: var(--font-body);
+}
+
+/* Halbton-Textur: klassisches Druckraster als dezenter Hintergrund */
+.halftone-bg {
+  background-image: radial-gradient(var(--ink) 1px, transparent 1px);
+  background-size: 12px 12px;
+  opacity: 0.08;
+}
+
+/* Signature-Element: Misregistration-Effekt.
+   Simuliert einen leicht versetzten Farb-Layer, wie bei einem
+   verrutschten Siebdruck. Wird auf Karten & Buttons beim Hover genutzt. */
+.riso-shift {
+  position: relative;
+  transition: transform 0.15s ease;
+}
+
+.riso-shift::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--riso-red);
+  z-index: -1;
+  opacity: 0;
+  transform: translate(0, 0);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.riso-shift:hover::before {
+  opacity: 1;
+  transform: translate(5px, 5px);
+}
+
+.riso-shift:hover {
+  transform: translate(-2px, -2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .riso-shift,
+  .riso-shift::before {
+    transition: none;
+  }
+}
