@@ -3,11 +3,11 @@
   "customerEmail": "max.mustermann@example.com",
   "orderItems": [
     {
-      "productId": 2,
+      "productId": 4,
       "quantity": 2
     },
     {
-      "productId": 3,
+      "productId": 5,
       "quantity": 1
     }
   ]
